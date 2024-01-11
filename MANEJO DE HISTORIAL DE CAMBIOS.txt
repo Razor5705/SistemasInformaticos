@@ -1,0 +1,194 @@
+a
+EQ4205@DESKTOP-EHS0JB7 MINGW32 ~ (master)
+$ git clone https://github.com/asalber/libro-git.git
+Cloning into 'libro-git'...
+remote: Enumerating objects: 42, done.
+remote: Counting objects: 100% (6/6), done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 42 (delta 2), reused 2 (delta 2), pack-reused 36
+Receiving objects: 100% (42/42), 4.55 KiB | 4.55 MiB/s, done.
+Resolving deltas: 100% (8/8), done.
+
+EQ4205@DESKTOP-EHS0JB7 MINGW32 ~ (master)
+$ cd libro-git
+
+EQ4205@DESKTOP-EHS0JB7 MINGW32 ~/libro-git (master)
+$ git reset --hard 8c808
+HEAD is now at 8c80810 Añadido capítulo 3 sobre gestión de ramas al índice.
+
+EQ4205@DESKTOP-EHS0JB7 MINGW32 ~/libro-git (master)
+$ git remote remove origin
+
+EQ4205@DESKTOP-EHS0JB7 MINGW32 ~/libro-git (master)
+$ mkdir capitulos
+
+EQ4205@DESKTOP-EHS0JB7 MINGW32 ~/libro-git (master)
+$ echo "Git es un sistema de control de versiones ideado por Linus Torvalds." > capitulos/capitulo1.txt
+
+EQ4205@DESKTOP-EHS0JB7 MINGW32 ~/libro-git (master)
+$ git add capitulos/capitulo1.txt
+warning: in the working copy of 'capitulos/capitulo1.txt', LF will be replaced by CRLF the next time Git touches it
+
+EQ4205@DESKTOP-EHS0JB7 MINGW32 ~/libro-git (master)
+$ git commit -m "Añadido capítulo 1."
+[master 8d7c27f] Añadido capítulo 1.
+ 1 file changed, 1 insertion(+)
+ create mode 100644 capitulos/capitulo1.txt
+
+EQ4205@DESKTOP-EHS0JB7 MINGW32 ~/libro-git (master)
+$ git log
+commit 8d7c27f468458acc395515bd7963b3994c2ac744 (HEAD -> master)
+Author: Nikolas Medina <nikkmed805@gmail.com>
+Date:   Thu Jan 11 12:38:17 2024 +0100
+
+    Añadido capítulo 1.
+
+commit 8c808102b96843781205b3169444a002878f5b21
+Author: Alfredo Sánchez Alberca <asalber@gmail.com>
+Date:   Wed Feb 13 18:05:27 2019 +0100
+
+    Añadido capítulo 3 sobre gestión de ramas al índice.
+
+commit bd7f788903cf1b1adbde028d474068cebb6ac870
+Author: Alfredo Sánchez Alberca <asalber@gmail.com>
+Date:   Wed Feb 13 17:58:58 2019 +0100
+
+    Añadido índice del libro.
+
+EQ4205@DESKTOP-EHS0JB7 MINGW32 ~/libro-git (master)
+$ git log --stat
+commit 8d7c27f468458acc395515bd7963b3994c2ac744 (HEAD -> master)
+Author: Nikolas Medina <nikkmed805@gmail.com>
+Date:   Thu Jan 11 12:38:17 2024 +0100
+
+    Añadido capítulo 1.
+
+ capitulos/capitulo1.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 8c808102b96843781205b3169444a002878f5b21
+Author: Alfredo Sánchez Alberca <asalber@gmail.com>
+Date:   Wed Feb 13 18:05:27 2019 +0100
+
+    Añadido capítulo 3 sobre gestión de ramas al índice.
+
+ indice.txt | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit bd7f788903cf1b1adbde028d474068cebb6ac870
+Author: Alfredo Sánchez Alberca <asalber@gmail.com>
+Date:   Wed Feb 13 17:58:58 2019 +0100
+
+    Añadido índice del libro.
+
+ indice.txt | 3 +++
+ 1 file changed, 3 insertions(+)
+
+EQ4205@DESKTOP-EHS0JB7 MINGW32 ~/libro-git (master)
+$ ^C
+
+EQ4205@DESKTOP-EHS0JB7 MINGW32 ~/libro-git (master)
+$ $ echo "El flujo de trabajo básico con Git consiste en: 1- Hacer cambios
+en el repositorio. 2- Añadir los cambios a la zona de
+intercambio temporal. 3- Hacer un commit de los cambios." > capitulos/capitulo2.txt
+bash: $: command not found
+
+EQ4205@DESKTOP-EHS0JB7 MINGW32 ~/libro-git (master)
+$
+echo "El flujo de trabajo básico con Git consiste en: 1- Hacer cambios
+en el repositorio. 2- Añadir los cambios a la zona de
+intercambio temporal. 3- Hacer un commit de los cambios." > capitulos/capitulo2.txt
+
+EQ4205@DESKTOP-EHS0JB7 MINGW32 ~/libro-git (master)
+$ git add capitulos/capitulo2.txt
+warning: in the working copy of 'capitulos/capitulo2.txt', LF will be replaced by CRLF the next time Git touches it
+
+EQ4205@DESKTOP-EHS0JB7 MINGW32 ~/libro-git (master)
+$ git commit -m "Añadido capítulo 2."
+[master 0e9e904] Añadido capítulo 2.
+ 1 file changed, 3 insertions(+)
+ create mode 100644 capitulos/capitulo2.txt
+
+EQ4205@DESKTOP-EHS0JB7 MINGW32 ~/libro-git (master)
+$ git log -1 -p
+commit 0e9e904cca174d229d9e99a6e29fe9ee936fffb2 (HEAD -> master)
+Author: Nikolas Medina <nikkmed805@gmail.com>
+Date:   Thu Jan 11 12:46:57 2024 +0100
+
+    Añadido capítulo 2.
+
+diff --git a/capitulos/capitulo2.txt b/capitulos/capitulo2.txt
+new file mode 100644
+index 0000000..659eb1f
+--- /dev/null
++++ b/capitulos/capitulo2.txt
+@@ -0,0 +1,3 @@
++El flujo de trabajo básico con Git consiste en: 1- Hacer cambios
++en el repositorio. 2- Añadir los cambios a la zona de
++intercambio temporal. 3- Hacer un commit de los cambios.
+
+EQ4205@DESKTOP-EHS0JB7 MINGW32 ~/libro-git (master)
+$ color 2
+bash: color: command not found
+
+EQ4205@DESKTOP-EHS0JB7 MINGW32 ~/libro-git (master)
+$ echo "^[[200~Git permite la creación de ramas lo que permite tener distintas"
+Git permite la creación de ramas lo que permite tener distintas
+
+EQ4205@DESKTOP-EHS0JB7 MINGW32 ~/libro-git (master)
+$ versiones del mismo proyecto y trabajar de manera simultanea
+bash: versiones: command not found
+
+EQ4205@DESKTOP-EHS0JB7 MINGW32 ~/libro-git (master)
+$ echo "Git permite la creación de ramas lo que permite tener distintas
+versiones del mismo proyecto y trabajar de manera simultanea
+en ellas." > capitulos/capitulo3.txt
+
+EQ4205@DESKTOP-EHS0JB7 MINGW32 ~/libro-git (master)
+$ git add capitulos/capitulo3.txt
+warning: in the working copy of 'capitulos/capitulo3.txt', LF will be replaced by CRLF the next time Git touches it
+
+EQ4205@DESKTOP-EHS0JB7 MINGW32 ~/libro-git (master)
+$ git commit -m "Añadido Cap 3"
+[master 7538bca] Añadido Cap 3
+ 1 file changed, 3 insertions(+)
+ create mode 100644 capitulos/capitulo3.txt
+
+EQ4205@DESKTOP-EHS0JB7 MINGW32 ~/libro-git (master)
+$ git log -1 -p
+commit 7538bca2c1853308b31c225dee4a0dbc30cf6907 (HEAD -> master)
+Author: Nikolas Medina <nikkmed805@gmail.com>
+Date:   Thu Jan 11 12:51:07 2024 +0100
+
+    Añadido Cap 3
+
+diff --git a/capitulos/capitulo3.txt b/capitulos/capitulo3.txt
+new file mode 100644
+index 0000000..9d1d376
+--- /dev/null
++++ b/capitulos/capitulo3.txt
+@@ -0,0 +1,3 @@
++Git permite la creación de ramas lo que permite tener distintas
++versiones del mismo proyecto y trabajar de manera simultanea
++en ellas.
+
+EQ4205@DESKTOP-EHS0JB7 MINGW32 ~/libro-git (master)
+$
+echo "Capítulo 5: Conceptos avanzados" >> indice.txt
+
+EQ4205@DESKTOP-EHS0JB7 MINGW32 ~/libro-git (master)
+$ git add indice.txt
+warning: in the working copy of 'indice.txt', LF will be replaced by CRLF the next time Git touches it
+
+EQ4205@DESKTOP-EHS0JB7 MINGW32 ~/libro-git (master)
+$ git commit -m "Añadido capítulo 5 al índice."
+[master 5cd01ba] Añadido capítulo 5 al índice.
+ 1 file changed, 1 insertion(+)
+
+EQ4205@DESKTOP-EHS0JB7 MINGW32 ~/libro-git (master)
+$ git blame indice.txt
+^bd7f788 (Alfredo Sánchez Alberca 2019-02-13 17:58:58 +0100 1) Capítulo 1: Introducción a Git
+^bd7f788 (Alfredo Sánchez Alberca 2019-02-13 17:58:58 +0100 2) Capítulo 2: Flujo de trabajo básico
+8c808102 (Alfredo Sánchez Alberca 2019-02-13 18:05:27 +0100 3) Capítulo 3: Gestión de ramas
+8c808102 (Alfredo Sánchez Alberca 2019-02-13 18:05:27 +0100 4) Capítulo 4: Repositorios remotos
+5cd01ba5 (Nikolas Medina          2024-01-11 12:53:45 +0100 5) Capítulo 5: Conceptos avanzados
